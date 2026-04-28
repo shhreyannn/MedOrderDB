@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    --primary: 171 83% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 10% 95%;
+    --secondary-foreground: 220 15% 30%;
+
+    --muted: 220 10% 93%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 171 83% 30%;
+
+    --radius: 0.75rem;
+
+    --sql-keyword: 210 100% 45%;
+    --sql-string: 35 90% 45%;
+    --sql-number: 280 70% 50%;
+    --sql-comment: 220 10% 55%;
+    --sql-table: 171 83% 30%;
+    --sql-function: 330 70% 50%;
+
+    --status-committed: 152 60% 42%;
+    --status-rolled-back: 0 72% 51%;
+    --status-pending: 35 90% 55%;
+    --status-waiting: 210 80% 50%;
+
+    --terminal-cursor: 171 83% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .sql-keyword {
+    color: hsl(var(--sql-keyword));
+    font-weight: 600;
+  }
+  .sql-string {
+    color: hsl(var(--sql-string));
+  }
+  .sql-number {
+    color: hsl(var(--sql-number));
+  }
+  .sql-comment {
+    color: hsl(var(--sql-comment));
+    font-style: italic;
+  }
+  .sql-table {
+    color: hsl(var(--sql-table));
+  }
+  .sql-function {
+    color: hsl(var(--sql-function));
+  }
+
+  .terminal-block {
+    @apply bg-card border border-border rounded-md p-4 font-mono text-sm overflow-x-auto;
+  }
+
+  .status-committed {
+    color: hsl(var(--status-committed));
+  }
+  .status-rolled-back {
+    color: hsl(var(--status-rolled-back));
+  }
+  .status-pending {
+    color: hsl(var(--status-pending));
+  }
+  .status-waiting {
+    color: hsl(var(--status-waiting));
+  }
+
+  .glow-green {
+    text-shadow: 0 0 10px hsl(142 70% 45% / 0.5);
+  }
+
+  .pulse-cursor {
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  @keyframes cursor-blink {
+    50% { opacity: 0; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.3s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.2s ease-out forwards;
+  }
+}
